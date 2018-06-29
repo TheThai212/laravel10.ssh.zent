@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <title>Blog - Zent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('blog_assets/img/mylogo.jpg')}}"/>
+    <!-- Latest compiled and minified CSS & JS -->
     <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="{{mix('css/all.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('blog_assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('blog_assets/css/slippry.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('blog_assets/css/fonts.css') }}">
@@ -14,6 +16,8 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
+    {{-- <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> --}}
 </head>
 
 <body>
@@ -39,7 +43,7 @@
     
     	<!-- LOGO -->    
     	<div class="logo-container">
-        	<a href="index.html"><img src="{{ asset('blog_assets/img/logo.png')}}" alt="logo" ></a>
+        	<a href="http://127.0.0.1:8000"><img style="width: 250px;height: 220px; border-radius: 10%" src="{{ asset('blog_assets/img/mylogo.jpg')}}" alt="logo" ></a>
             <div class="tada-social">
             	<a href="#"><i class="icon-facebook5"></i></a>
                 <a href="#"><i class="icon-twitter4"></i></a>
@@ -54,16 +58,16 @@
     	<nav class="menu-desktop menu-sticky">
     
             <ul class="tada-menu">
-                     <li><a href="#" class="active">HOME <i class="icon-arrow-down8"></i></a>
-                        <ul class="submenu">
-                        	<li><a href="{{asset('index')}}">Home hihi</a></li>
-                            <li><a href="index.html" class="active">Home 1 Column + Sidebar</a></li>                            
-                            <li><a href="home-2-columns-with-sidebar.html">Home 2 Columns + Sidebar</a></li>
-                            <li><a href="home-2-columns.html">Home 2 Columns</a></li>
-                            <li><a href="home-3-columns.html">Home 3 Columns</a></li>                                                                      
-                        </ul>
-                    </li>
-                    <li><a href="#">FEATURES <i class="icon-arrow-down8"></i></a>
+                
+                    @foreach( $categories as $cate)
+                        <li>
+                        <a href="{{asset('category/'.$cate->slug)}}" class="active">{{$cate->name}} </a>
+                        </li>
+                    @endforeach()
+                     
+
+                    {{-- <div >
+                            <li><a href="#">FEATURES <i class="icon-arrow-down8"></i></a>
                         <ul class="submenu">
                             <li><a href="page.html">Page</a></li>
                             <li><a href="page-with-right-sidebar.html">Page + Right Sidebar</a></li>
@@ -85,7 +89,7 @@
                     </li>                                     
                     <li><a href="#">BLOG <i class="icon-arrow-down8"></i></a>
                         <ul class="submenu">
-                        	<li><a href="{{asset('post')}}">Blog hihi</a></li>
+                            <li><a href="{{asset('post')}}">Blog hihi</a></li>
                             <li><a href="blog-1-column-with-sidebar.html">Blog + Sidebar</a></li>                            
                             <li><a href="blog-2-columns-with-sidebar.html">Blog 2 Columns + Sidebar</a></li>
                             <li><a href="blog-2-columns.html">Blog 2 Columns</a></li>
@@ -95,6 +99,8 @@
                     <li><a href="about-us.html">ABOUT US</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
             </ul>
+                    </div> --}}
+                    
         
         </nav>
         
@@ -152,9 +158,9 @@
         
         <!-- SEARCH -->
         <div class="tada-search">
-			<form>
+			<form action="{{asset('search')}}" method="GET">
             	<div class="form-group-search">
-              		<input type="search" class="search-field" placeholder="Search and hit enter...">
+              		<input name=search type="search" class="search-field" placeholder="Search and hit enter...">
               		<button type="submit" class="search-btn"><i class="icon-search4"></i></button>
             	</div>
           	</form>
@@ -192,7 +198,7 @@
                     </div>                
                 </li>
                 <li>
-                	<img src="img/image-slider-4.jpg" alt="image slider 4">
+                	<img src="{{ asset('blog_assets/img/image-slider-4.jpg') }}" alt="image slider 4">
                 	<div class="pattern"></div>
                     <div class="tada-text-container">
                     	<h1>AENEAN AC DIAM</h1>
@@ -214,7 +220,7 @@
     
 	<section class="tada-container content-posts">
     
-    
+        
         @yield('content')
         
     </section>

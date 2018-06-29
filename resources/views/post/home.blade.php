@@ -8,226 +8,50 @@
 
       <!-- CONTENT -->    
       <div class="content col-xs-8">
-    
-        <div class="col-xs-6">
+
+        <div  class="row">
+                <div  class="col-xs-12 clearfix">
         
         
-            <!-- ARTICLE 1 -->
-            <article>
+              <!-- ARTICLE -->
+            @foreach( $posts as $post)
+            <article ">
                 <div class="post-image">
-                    <img src="img/img-post-1.jpg" alt="post image 1">
-                    <div class="category"><a href="#">IMG</a></div>
+                    <img src="{{$post->thumbnail}}" alt="post image 1">
+                    <div class="category"><a href="{{asset('category/$post->slug')}}">IMG</a></div>
                 </div>
                 <div class="post-text">
-                    <span class="date">07 Jun 2016</span>
-                    <h2><a href="{{asset('detail')}}">MAECENAS CONSECTETUR</a></h2>                            
+                    <span class="date">{{$post->thumbnail}}</span>
+                    <h2><a href="{{asset('post/'.$post->slug)}}">{{$post->title}}</a></h2>                            
                 </div>
                 <div class="post-info">
                     <div class="post-by">Post By <a href="#">AD-Theme</a></div>
                 </div>
             </article>
+            @endforeach()
         
         
-       </div>
-       
-       <div class="col-xs-6"> 
-        
-        
-            <!-- ARTICLE 2 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-2.jpg" alt="post image 2">
-                    <div class="category"><a href="#">Travel</a></div>
                 </div>
-                <div class="post-text">
-                    <span class="date">06 Jun 2016</span>
-                    <h2><a href="#">MAURIS <br> SIT AMET</a></h2>                               
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>
-        
-        
+
         </div>
-
-        <div class="content col-xs-6 clearfix">
-
-
-            <!-- ARTICLE 3 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-3.jpg" alt="post image 3">
-                    <div class="category"><a href="#">Business</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">05 Jun 2016</span>
-                    <h2><a href="#">NAM EGET PULVINAR ANTE</a></h2>                                 
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>
-       
-       
-       </div>
-       
-       <div class="content col-xs-6">
-       
-            
-            <!-- ARTICLE 4 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-4.jpg" alt="post image 4">
-                    <div class="category"><a href="#">Technology</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">04 Jun 2016</span>
-                    <h2><a href="#">VIVAMUS ET TURPIS LACINIA</a></h2>                               
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>
         
-        
-        </div>
+          
    
-        <div class="content col-xs-6 clearfix">
-        
-        
-            <!-- ARTICLE 5 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-5.jpg" alt="post image 5">
-                    <div class="category"><a href="#">IMG</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">03 Jun 2016</span>
-                    <h2><a href="#">TINCIDUNT SIT ULTRICIES AMET</a></h2>                                
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>
+          
 
 
-        </div>
-        
-        <div class="content col-xs-6">
-        
-        
-            <!-- ARTICLE 6 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-6.jpg" alt="post image 6">
-                    <div class="category"><a href="#">Travel</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">02 Jun 2016</span>
-                    <h2><a href="#">DUIS FACILISIS AUGUE VITAE</a></h2>                                
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>
-            
-            
-        </div>   
-        
-        <div class="content col-xs-6 clearfix">
 
-
-            <!-- ARTICLE 7 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-7.jpg" alt="post image 7">
-                    <div class="category"><a href="#">Business</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">01 Jun 2016</span>
-                    <h2><a href="#">TELLUS QUIS IPSUM VARIUS</a></h2>                                
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>
-
-
-        </div>
-        
-        <div class="content col-xs-6">
-
-            
-            <!-- ARTICLE 8 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-8.jpg" alt="post image 8">
-                    <div class="category"><a href="#">Technology</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">01 Jun 2016</span>
-                    <h2><a href="#">SED FINIBUS LACUS UT ULTRICES</a></h2>                               
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>            
-   
-   
-        </div>
-
-        <div class="content col-xs-6 clearfix">
-
-
-            <!-- ARTICLE 9 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-9.jpg" alt="post image 9">
-                    <div class="category"><a href="#">Business</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">01 Jun 2016</span>
-                    <h2><a href="#">CRAS IN NIBH NEC SAPIEN BIBENDUM</a></h2>                                
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>
-
-
-        </div>
-        
-        <div class="content col-xs-6">
-
-            
-            <!-- ARTICLE 10 -->
-            <article>
-                <div class="post-image">
-                    <img src="img/img-post-10.jpg" alt="post image 10">
-                    <div class="category"><a href="#">Technology</a></div>
-                </div>
-                <div class="post-text">
-                    <span class="date">01 Jun 2016</span>
-                    <h2><a href="#">PHASELLUS IACULIS SOLLICITUDIN</a></h2>                               
-                </div>
-                <div class="post-info">
-                    <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-                </div>
-            </article>            
-   
-   
-        </div>
-
-        
-        <div class="clearfix"></div>
         
         
         <!-- NAVIGATION -->
+
+                {{-- {{  $posts->appends(['manh'=>'tung'])->links() }} --}}
         <div class="navigation">
-                <a href="#" class="prev"><i class="icon-arrow-left8"></i> Previous Posts</a>
-                <a href="#" class="next">Next Posts <i class="icon-arrow-right8"></i></a>
+                <a href="{{$posts->previousPageUrl()}}" class="prev"><i class="icon-arrow-left8"></i> Previous Posts</a>
+                <a href="{{$posts->nextPageUrl()}}" class="next">Next Posts <i class="icon-arrow-right8"></i></a>
                 <div class="clearfix"></div>
+
+
         </div>  
       
       
@@ -241,12 +65,12 @@
             <!-- ABOUT ME -->                  
             <div class="widget about-me">
                 <div class="ab-image">
-                    <img src="img/about-me.jpg" alt="about me">
+                    <img src="{{ asset('blog_assets/img/about-me.jpg')}}" alt="about me">
                     <div class="ab-title">About Me</div>
                 </div>
                 <div class="ad-text">
                     <p>Lorem ipsum dolor sit consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                    <span class="signing"><img src="img/signing.png" alt="signing"></span>
+                    <span class="signing"><img src="{{ asset('blog_assets/img/signing.png')}}" alt="signing"></span>
                 </div>
             </div>
 
@@ -258,41 +82,16 @@
                 </h3>
                 <div class="posts-container">
                 
+                    @foreach( $last5posts as $post)
                     <div class="item">
-                        <img src="img/latest-posts-1.jpg" alt="post 1" class="post-image">
+                        <img src="{{$post->thumbnail}}" alt="post 1" class="post-image">
                         <div class="info-post">
-                            <h5><a href="#">MAECENAS <br> CONSECTETUR</a></h5>
+                            <h5><a href="{{asset('post/'.$post->slug)}}">{{$post->title}}</a></h5>
                             <span class="date">07 JUNE 2016</span>  
                         </div> 
                         <div class="clearfix"></div>   
                     </div>
-
-                    <div class="item">
-                        <img src="img/latest-posts-2.jpg" alt="post 2" class="post-image">
-                        <div class="info-post">
-                            <h5><a href="#">MAURIS SIT AMET</a></h5>
-                            <span class="date">06 JUNE 2016</span>                          
-                        </div> 
-                        <div class="clearfix"></div>   
-                    </div>
-
-                    <div class="item">
-                        <img src="img/latest-posts-3.jpg" alt="post 3" class="post-image">
-                        <div class="info-post">
-                            <h5><a href="#">NAM EGET <br> PULVINAR ANTE</a></h5>
-                            <span class="date">05 JUNE 2016</span>                          
-                        </div> 
-                        <div class="clearfix"></div>   
-                    </div>
-
-                    <div class="item">
-                        <img src="img/latest-posts-4.jpg" alt="post 4" class="post-image">
-                        <div class="info-post">
-                            <h5><a href="#">VIVAMUS ET TURPIS LACINIA</a></h5>
-                            <span class="date">04 JUNE 2016</span>                      
-                        </div>    
-                        <div class="clearfix"></div>
-                    </div>
+                    @endforeach()
                     
                     <div class="clearfix"></div>
                 </div>
@@ -321,18 +120,10 @@
                     Tags
                 </h3>
                 <div class="tags-container">
-                    <a href="#">Audio</a>
-                    <a href="#">Travel</a>
-                    <a href="#">Food</a>
-                    <a href="#">Event</a>
-                    <a href="#">Wordpress</a>
-                    <a href="#">Video</a>
-                    <a href="#">Design</a>
-                    <a href="#">Sport</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Post</a> 
-                    <a href="#">Img</a>
-                    <a href="#">Masonry</a>                                    
+                    @foreach($tags as $tag)
+                        <a href="{{asset('tag/'.$tag->slug)}}">{{$tag->name}}</a>  
+                    @endforeach()
+                                                     
                 </div>
                 <div class="clearfix"></div>
             </div> 
@@ -341,7 +132,7 @@
             <!-- ADVERTISING -->                              
             <div class="widget advertising">
                 <div class="advertising-container">
-                    <img src="img/350x300.png" alt="banner 350x300">
+                    <img src="{{ asset('blog_assets/img/350x300.png')}}" alt="banner 350x300">
                 </div>
             </div>
 
@@ -354,8 +145,14 @@
                 <div class="newsletter-container">
                     <h4>DO NOT MISS OUR NEWS</h4>
                     <p>Sign up and receive the <br> latest news of our company</p> 
-                    <form>
-                       <input type="email" class="newsletter-email" placeholder="Your email address...">
+                    <form action="/postMail" method="POST">
+                        {{csrf_field()}}
+                        <label>Name</label>
+                       <input type="text" name="name" class="newsletter-email" placeholder="Your email address...">
+                        <label>Message</label>
+                       <input type="text" name="message" class="newsletter-email" placeholder="Your email address...">
+
+
                        <button type="submit" class="newsletter-btn">Send</button>
                     </form>                                  
                 </div>
