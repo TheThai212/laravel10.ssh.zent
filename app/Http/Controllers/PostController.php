@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Post;
 use Yajra\Datatables\Datatables;
-
 class PostController extends Controller
 {
         var  $str = 'thế thái';
@@ -20,18 +17,19 @@ class PostController extends Controller
     	$posts = Post::all();
     	// dd($posts);
     	// die;
-    	return view('admin.post', compact('posts'));
+    	return view('admin.post.index', compact('posts'));
+    }
+    function add(){
+    	return view('admin.post.add');	
+
     }
     public function show($id){
     	 $post = Post::find($id);
     	 return view('admin.detail', compact('post'));
-
     }
     public function edit($id){
-
          $post = Post::find($id);
          return view('admin.edit', compact('post'));
-
     }
     public function delete($id){
         $post = Post::find($id);

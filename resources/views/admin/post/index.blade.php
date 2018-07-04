@@ -27,8 +27,10 @@
 @section('content')
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">List all post</h3>
+              <h3 style="float: left; margin-right: 30px" class="card-title">List all post</h3>
+              <a href="{{asset('adm/post/add')}}"><button style="width: 100px;" type="button" class="btn btn-block btn-success btn-sm">add new</button></a>
             </div>
+
             <!-- /.card-header -->
             <div class="card-body">
               <table id="post-table" class="table table-bordered table-striped">
@@ -54,26 +56,13 @@
 	                      <div class="btn-group">
 	                        	<a href="{{asset("adm/post/$post->id")}}"><button type="button" class="btn btn-info btn-flat"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
 	                        
-	                        <button type="button" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></button>
+	                        <a href="{{asset("adm/post/edit/$post->id")}}"><button type="button" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></button></a>
                           <a href="javascript:"><button data-toggle="modal" data-target="#delete" data-id="{{$post->id}}" type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash-o"></i></i></button></a>
 	                       
 	                      </div>
 	                    </td>
 	                </tr>
-	            @endforeach()
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Content</th>
-                  <th>Thumbnail</th>
-                  <th>View count</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
-              </table>
-              <div  class="modal fade" id="delete">
+                  <div  class="modal fade" id="delete">
                   <div  class="modal-dialog" role="document">
                     <div  class="modal-content">
                       <div class="modal-header">
@@ -98,6 +87,20 @@
                     </div><!-- /.modal-content -->
                   </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
+	            @endforeach()
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Content</th>
+                  <th>Thumbnail</th>
+                  <th>View count</th>
+                  <th>Action</th>
+                </tr>
+                </tfoot>
+              </table>
+              
             </div>
                 
             <!-- /.card-body -->

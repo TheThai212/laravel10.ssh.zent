@@ -11,13 +11,62 @@
 |
 */
 use App\Tags;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+// Route::get('',function(){
+// 	abort(404);
+// });h
+Route::get('uploadFile',function(){
+	return view('up');
+});
+Route::get('go-to-trash',function(){
+	$user = App\User::find(1)->delete();
+	dd($user);
+});
+Route::get('trash',function(){
+	//lay ban gi chi trong thung rac
+	// $user = App\User::onlyTrashed()->where('email','thethai@gmail.com')->fist();
+	
+	// lay ban ghi trong ca thung rac va ngoai thug rac
+	$user = App\User::withTrashed()->where('email','thethai.nguyen.212@gmail.com')->first();
+
+	// khoi phuc dung ->restore()
+	dd($user);
+
+});
+
+Route::post('upload',function(Request $request){
+	//upload 1 file
+	// $parth  = $request->images->store('images');
+	// dd($parth);
+	// 
+	// xoa
+	// Storage::delete();
+	//nhieu file
+	foreach($request->images as $key => $image){
+		$image->store('images');//images la ten file trong storage
+	};
+});
 
 Route::get('/', 'HomeController@index');
 Route::prefix('adm')->group(function(){
-	route::get('/','PostController@index')->name('listPost');
-	route::get('/post/{id}','PostController@show');
-	route::get('/post/edit/{id}','PostController@edit');
-	route::post('/post/delete/{id}','PostController@delete');
+
+	Route::prefix('post')->group(function(){
+		route::get('/','PostController@index')->name('listPost');	
+		route::get('/edit/{id}','PostController@edit');
+		route::post('/update/{id}','PostController@update');
+		route::get('/add','PostController@add');
+		route::post('/add','PostController@store');
+		route::get('/{id}','PostController@show');
+		route::post('/delete/{id}','PostController@delete');
+	});
+	
+	Route::prefix('category')->group(function(){
+		route::get('/','CategoryController@index');
+			route::get('/add','CategoryController@add');
+			route::post('/add','CategoryController@store');
+	});
 });
 
 Route::get('/SweetAlert',

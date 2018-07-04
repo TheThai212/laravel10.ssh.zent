@@ -13,4 +13,19 @@ class CategoryController extends Controller
     					)->firstOrFail();
     	return view('category.detail', compact('category'));
     }
+
+    public function index(){
+    	$categories = Category::all();
+    	// dd($posts);
+    	// die;
+    	return view('admin.category.index', compact('categories'));
+    }
+    public function add()
+    {
+    	return view('admin.category.add');	
+    }
+    public function store(Request $request)
+    {
+        # code...
+    }
 }

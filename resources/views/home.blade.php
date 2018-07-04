@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
 
-                <div class="panel-heading"><a href="http://127.0.0.1:8000/adm">Admin</a></div>
+                <div class="panel-heading"><a href="{{asset("/adm")}}">Admin</a></div>
 
                 <div class="panel-body">
                     @if (session('status'))

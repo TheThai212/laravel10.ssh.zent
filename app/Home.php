@@ -8,3 +8,4 @@ class Home extends Model
 {
     //
 }
+				

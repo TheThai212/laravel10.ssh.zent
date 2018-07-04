@@ -15,6 +15,9 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
+    public function upload(){
+        return view('up');
+    }
 
     /**
      * Show the application dashboard.
