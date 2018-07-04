@@ -10,7 +10,7 @@ class PostController extends Controller
     $slug = strtolower(trim(preg_replace('/[\s-]+/', $delimiter, preg_replace('/[^A-Za-z0-9-]+/', $delimiter, preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $str))))), $delimiter));
     return $slug;
 
-} 
+	} 
     public function detail($categorys,$post_slug){
     	$post1 = Post::where(
     					'slug', '=', $post_slug
@@ -32,7 +32,6 @@ class PostController extends Controller
     	$this->validate($request,
     		[
     			'title'=>'required',
-    			'Thumbnail'=>'required',
     			'description'=>'required',
     			'content'=>'required',
     			'category_id'=>'required',
@@ -55,16 +54,42 @@ class PostController extends Controller
     }
     public function show($id){
     	 $post = Post::find($id);
-    	 return view('admin.detail', compact('post'));
+    	 return view('admin.post.detail', compact('post'));
     }
     public function edit($id){
          $post = Post::find($id);
-         return view('admin.edit', compact('post'));
+         return view('admin.post.edit', compact('post'));
+    }
+    public function update(Request $request,$id)
+    {
+    	$post = Post::find($id);
+    	$this->validate($request,
+    		[
+    			'title'=>'required',
+    			'description'=>'required',
+    			'content'=>'required',
+    			'category_id'=>'required',
+    		],[
+
+    		]);  
+    	$post->title = $request->title;
+    	$post->Thumbnail = $request->Thumbnail;
+    	$post->description = $request->description;
+    	$post->slug = $this->createSlug($request->description);
+    	$post->content = $request->content;
+    	$post->category_id = $request->category_id;
+    	$post->tag_id = 1;
+    	$post->user_id = 1;
+    	$post->save();
+    	return redirect('adm/post')->with('noti','Sửa thành công');  
+
     }
     public function delete($id){
         $post = Post::find($id);
+        // $post;
+        // die;
         $post->delete();
-        return redirect('adm');
+        return redirect('adm/post');
     }
     public function dataTable()
     {

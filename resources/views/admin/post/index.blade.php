@@ -46,6 +46,7 @@
                 </thead>
                 <tbody>
                 @foreach($posts as $post)
+                {{-- {{dd($post->id)}} --}}
 	                <tr>
                     <td>{{$post->title}}</td>
 	                  <td>{{$post->description}}</td>

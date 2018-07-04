@@ -58,14 +58,19 @@ Route::prefix('adm')->group(function(){
 		route::post('/update/{id}','PostController@update');
 		route::get('/add','PostController@add');
 		route::post('/add','PostController@store');
-		route::get('/{id}','PostController@show');
 		route::post('/delete/{id}','PostController@delete');
+
+		route::get('/{id}','PostController@show');
 	});
 	
 	Route::prefix('category')->group(function(){
 		route::get('/','CategoryController@index');
 			route::get('/add','CategoryController@add');
 			route::post('/add','CategoryController@store');
+			route::post('/delete/{id}','CategoryController@delete');
+
+
+			route::get('/{id}','CategoryController@show');
 	});
 });
 
