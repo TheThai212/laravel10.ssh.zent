@@ -30,7 +30,7 @@
               <h3 style="float: left; margin-right: 30px" class="card-title">List all post</h3>
               <a href="{{asset('adm/post/add')}}"><button style="width: 100px;" type="button" class="btn btn-block btn-success btn-sm">add new</button></a>
             </div>
-
+           
             <!-- /.card-header -->
             <div class="card-body">
               <table id="post-table" class="table table-bordered table-striped">

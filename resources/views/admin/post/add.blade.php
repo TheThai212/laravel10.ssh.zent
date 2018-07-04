@@ -31,12 +31,20 @@
                 <form action="{{asset('adm/post/add')}}" method="POST" role="form" enctype="multipart/form-data" >
                 	{!! csrf_field() !!}
                 	@if(count($errors) > 0)
-						<div class="alert alert-danger">
-							@foreach($errors->all() as $err)
-								{{$err}}<br>
-							@endforeach
-						</div>
+      						<div class="alert alert-danger">
+      							@foreach($errors->all() as $err)
+      								{{$err}}<br>
+      							@endforeach
+      						</div>
                 	@endif()
+                   @if(session('noti'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          <strong>Success</strong> {{session('noti')}}.
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                    @endif
                   <!-- text input -->
                   <div class="form-group">
                     <label>Title</label>
