@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('header')
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 @endsection()
 
 @section('content-header')
@@ -45,50 +45,31 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($posts as $post)
-                {{-- {{dd($post->id)}} --}}
-	                <tr>
+                {{-- @foreach($posts as $post)
+                {{dd($post->id)}}
+	                <tr >
                     <td>{{$post->title}}</td>
 	                  <td>{{$post->description}}</td>
 	                  <td>{{ \Illuminate\Support\Str::words($post->content, 30)}}</td>
-	                  <td><center><img style="width: 70%;height: 30%;" src="{{$post->thumbnail}}"></center></td>
+	                  <td><center><img style="width: 70%;height: 30%;" src="{{Storage::url($post->thumbnail)}}"></center></td>
 	                  <td>{{$post->view_count}}</td>
 	                   <td>
 	                      <div class="btn-group">
 	                        	<a href="{{asset("adm/post/$post->id")}}"><button type="button" class="btn btn-info btn-flat"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
 	                        
-	                        <a href="{{asset("adm/post/edit/$post->id")}}"><button type="button" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></button></a>
-                          <a href="javascript:"><button data-toggle="modal" data-target="#delete" data-id="{{$post->id}}" type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash-o"></i></i></button></a>
+	                        <a href="{{asset("adm/post/edit/$post->id")}}">
+
+
+                          <button type="button" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></button></a>
+
+                          
+                         <button  data-url="{{route('post.delete',$post->id)}}" type="button" class="btn btn-danger btn-flat btn-delete"><i class="fa fa-trash-o"></i></i></button>
 	                       
 	                      </div>
 	                    </td>
 	                </tr>
-                  <div  class="modal fade" id="delete">
-                  <div  class="modal-dialog" role="document">
-                    <div  class="modal-content">
-                      <div class="modal-header">
-                        <h4  class="modal-title">Delete comfirmation</h4>
-
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                          <span class="sr-only">Close</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <p>Are you sure?</p>
-                      </div>
-                      <form action="{{asset("adm/post/delete/$post->id")}}" method="POST">
-                        {{csrf_field()}}
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel!</button>
-                          <button type="submit" class="btn btn-danger">Sure!</button>
-                        </div> 
-                      </form>
-
-                    </div><!-- /.modal-content -->
-                  </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
-	            @endforeach()
+                 
+	            @endforeach() --}}
                 </tbody>
                 <tfoot>
                 <tr>
@@ -108,6 +89,6 @@
 @endsection()
 
 @section('footer')
-        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         
 @endsection()

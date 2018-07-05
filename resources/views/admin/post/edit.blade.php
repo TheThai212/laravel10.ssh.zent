@@ -39,6 +39,7 @@
                     <label>Thumbnail</label>
                       Select image to upload:
                         <input  type="file" name="Thumbnail" id="fileToUpload">
+                        <img style="width: 10%;height: 10%" src="{{Storage::url($post->thumbnail)}}" alt="">
                   </div>
                   <div class="form-group">
                     <label>Category</label>

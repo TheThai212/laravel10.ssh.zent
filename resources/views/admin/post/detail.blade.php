@@ -35,7 +35,7 @@
 
 		<div class="card-body">
 	        <legend>Thumbnail</legend>
-	        <center><img src="{{$post->thumbnail}}"></center>
+	        <center><img style="width: 50%;height: 50%;" src="{{Storage::url($post->thumbnail)}}"></center>
         </div>
 		<div class="card-body">
 	        <legend>Description</legend>

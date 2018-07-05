@@ -7,6 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <link rel="shortcut icon" type="image/png" href="{{ asset('blog_assets/img/mylogo.jpg')}}"/>
   <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -292,7 +293,9 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="//code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 {{-- <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script> --}}
 <!-- Bootstrap 4 -->
 <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -315,7 +318,7 @@
 <!-- page script -->
 
 {{-- Data Table --}}
-<script>
+{{-- <script>
   $(function () {
     $("#example1").DataTable();
     $('#example2').DataTable({
@@ -328,10 +331,19 @@
     });
   });
 
+</script> --}}
+<script>
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
 </script>
 
-{{-- // data table laravel --}}
-{{-- <script type="text/javascript">
+
+
+{{-- // post data table laravel --}}
+<script type="text/javascript">
   $(function() {
     $('#post-table').DataTable({
         processing: true,
@@ -343,11 +355,60 @@
             { data: 'content', name: 'content' },
             { data: 'thumbnail', name: 'thumbnail' },
             { data: 'view_count', name: 'view_count' },
-            { data: 'action', name: 'action' },
+            { data: 'action', name: 'action' }
+          ]
+    });
+});
+</script>
+
+{{-- category datatable laravel --}}
+<script type="text/javascript">
+  $(function() {
+    $('#cate-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('listcategory') !!}',
+        columns: [
+            { data: 'name', name: 'name' },
+            { data: 'thumbnail', name: 'thumbnail' },
+            { data: 'description', name: 'description' },
+            { data: 'action', name: 'action' }
+          ]
     });
 });
 
-</script> --}}
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".btn-delete").click(function(){
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this imaginary file!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            var url = $(this).attr("data-url");
+            console.log(url);
+            $.ajax({
+                    type:'DELETE',
+                    url: url,
+                    success: function(data){
+                       window.location.reload();
+                    }
+            })
+            swal("Poof! Your imaginary file has been deleted!", {
+              icon: "success",
+            });
+          } else {
+            swal("Your imaginary file is safe!");
+          }
+        });
+    });
+});
+</script>
 </body>
 </html>
 {{-- <!-- jQuery -->

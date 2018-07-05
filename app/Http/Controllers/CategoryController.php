@@ -25,10 +25,36 @@ class CategoryController extends Controller
        return view('admin.category.detail', compact('category'));
     }
     public function index(){
+       
     	$categories = Category::all();
     	// dd($posts);
     	// die;
     	return view('admin.category.index', compact('categories'));
+    }
+
+    public function getlist($value='')
+    {
+        $categories = Category::query();
+
+
+
+         return datatables()->eloquent($categories)
+        ->addColumn('action', function($categories){
+            return '<div class="btn-group">
+
+                        <a href="'.'category/'.$categories->id.'"><button class="btn btn-info btn-flat" userId="'.$categories->id.'"><i class="fa fa-eye"></i></button></a> 
+
+                        <a href="'.'category/edit/'.$categories->id.'"><button class="btn btn-warning btn-flat" userId="'.$categories->id.'"><i class="fa fa-edit"></i> </button></a>
+
+                        <button id="111" data-url="'.'/delete/'."$categories->id".'"  userId="'.$categories->id.'" class="btn btn-danger btn-flat btn-delete"><i class="fa fa-trash-o"></i></button>
+
+
+                      </div>';
+        })->editColumn('thumbnail', function($categories){
+            return '<center><img style="width: 30%;height:30%;" class="img-fluid" src="'.'http://localhost/storage/'.$categories->thumbnail.'"></center>';
+        })
+        ->rawColumns(['action','thumbnail'])
+        ->toJson();
     }
     public function add()
     {
@@ -49,12 +75,15 @@ class CategoryController extends Controller
 
         $category = new Category;
 
+        $path = $request->Thumbnail->store('images');
         $category->name = $request->name;
         $category->description = $request->description;
         $category->slug = $this->createSlug($request->name);
+        $category->thumbnail = $path;
         $category->save();
         return redirect('adm/category/add')->with('noti','thêm thành công');
     }
+    
 
     public function delete($id){
         $category = Category::find($id);

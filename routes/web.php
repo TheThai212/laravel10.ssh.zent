@@ -49,22 +49,25 @@ Route::post('upload',function(Request $request){
 	};
 });
 
-Route::get('/', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
 Route::prefix('adm')->group(function(){
 
 	Route::prefix('post')->group(function(){
-		route::get('/','PostController@index')->name('listPost');	
+
+		route::get('/','PostController@index');	
+		route::get('/listpost','PostController@getlist')->name('listPost');
 		route::get('/edit/{id}','PostController@edit');
 		route::post('/update/{id}','PostController@update');
 		route::get('/add','PostController@add');
 		route::post('/add','PostController@store');
-		route::post('/delete/{id}','PostController@delete');
+		route::delete('/delete/{id}','PostController@delete')->name('post.delete');
 
 		route::get('/{id}','PostController@show');
 	});
 	
 	Route::prefix('category')->group(function(){
 		route::get('/','CategoryController@index');
+		route::get('/listcategory','CategoryController@getlist')->name('listcategory');
 			route::get('/add','CategoryController@add');
 			route::post('/add','CategoryController@store');
 			route::post('/delete/{id}','CategoryController@delete');
